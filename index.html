@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livros de Direito na UFRGS</title>
+<meta name="description" content="Busca de livros e periódicos jurídicos disponíveis para a comunidade da UFRGS, com link direto para leitura.">
+<style>
+:root{
+  --bg:#F2F4F6; --surface:#FFFFFF; --ink:#15212B; --muted:#55646F; --line:#D3DBE1; --accent:#1B4FD6; --accent-ink:#FFFFFF;
+  --serif: Charter,"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#0E151B; --surface:#16202A; --ink:#E7EDF1; --muted:#9AA9B5; --line:#26343F; --accent:#8FADFF; --accent-ink:#0E151B; }
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:1rem}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--sans);-webkit-text-size-adjust:100%}
+.wrap{max-width:46rem;margin:0 auto;padding:2.25rem 1rem 4rem}
+h1{font:600 clamp(1.9rem,5vw,2.6rem)/1.1 var(--serif);letter-spacing:-.01em;margin:0 0 .5rem}
+.lede{color:var(--muted);margin:0 0 1.5rem;max-width:38rem}
+.busca{display:block;width:100%;font:inherit;font-size:1.15rem;padding:.9rem 1rem;border:2px solid var(--line);border-radius:.4rem;background:var(--surface);color:var(--ink)}
+.busca::placeholder{color:var(--muted)}
+:where(input,select,button,a,summary):focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.filtros{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:.9rem 0 0}
+@media (max-width:34rem){.filtros{grid-template-columns:1fr}}
+.filtros label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:.2rem}
+.filtros select{width:100%;font:inherit;padding:.5rem .6rem;border:1px solid var(--line);border-radius:.35rem;background:var(--surface);color:var(--ink)}
+details.como{margin:1.25rem 0 0;border-top:1px solid var(--line);padding-top:.75rem}
+details.como summary{cursor:pointer;font-weight:600}
+details.como div{color:var(--muted);margin-top:.5rem;max-width:38rem}
+details.como p{margin:.4rem 0}
+details.como a{color:var(--accent)}
+.contagem{margin:1.5rem 0 .5rem;color:var(--muted);font-size:.95rem}
+ul.lista{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+li.item{display:grid;grid-template-columns:1fr auto;gap:.25rem 1rem;align-items:start;padding:1rem 0 1rem .9rem;border-bottom:1px solid var(--line);border-left:6px solid var(--cor);margin-left:0}
+.titulo{font:600 1.12rem/1.3 var(--serif);margin:0}
+.ref{margin:.15rem 0 0;color:var(--muted);font-size:.92rem}
+.tags{margin:.35rem 0 0;font-size:.85rem;display:flex;flex-wrap:wrap;gap:.25rem .9rem}
+.tags .fonte{font-weight:600;color:var(--ink)}
+.tags .rede{color:var(--muted)}
+a.ler{align-self:center;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;padding:.55rem 1.1rem;border-radius:.35rem;white-space:nowrap}
+a.ler:hover{filter:brightness(1.08)}
+.mais{display:block;margin:1.25rem auto 0;font:inherit;font-weight:600;padding:.65rem 1.4rem;border:2px solid var(--accent);background:transparent;color:var(--accent);border-radius:.35rem;cursor:pointer}
+.vazio{padding:1.5rem 0;color:var(--muted)}
+.vazio button{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+footer p{margin:.4rem 0;max-width:38rem}
+@media (max-width:30rem){li.item{grid-template-columns:1fr}a.ler{justify-self:start}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Livros de Direito na UFRGS</h1>
+  <p class="lede" id="lede">Carregando acervo…</p>
+
+  <label class="sr" for="q" style="position:absolute;left:-9999px">Buscar por título, autor, editora ou assunto</label>
+  <input id="q" class="busca" type="search" placeholder="Título, autor, editora ou assunto" autocomplete="off" autofocus>
+
+  <div class="filtros">
+    <div><label for="fonte">Coleção</label><select id="fonte"><option value="">Todas</option></select></div>
+    <div><label for="acesso">Como abre</label>
+      <select id="acesso"><option value="">Qualquer</option><option value="L">Com login UFRGS, de qualquer lugar</option><option value="R">Só na rede UFRGS ou com proxy</option></select></div>
+    <div><label for="ordem">Ordem</label>
+      <select id="ordem"><option value="az">Título, de A a Z</option><option value="novos">Mais recentes primeiro</option></select></div>
+  </div>
+
+  <details class="como">
+    <summary>Como abrir os livros</summary>
+    <div>
+      <p><strong>Com login UFRGS:</strong> Minha Biblioteca, EBSCO e Springer pedem o login institucional e abrem de qualquer lugar. Na Minha Biblioteca, o primeiro acesso cria a conta a partir do Cartão UFRGS.</p>
+      <p><strong>Só na rede UFRGS ou com proxy:</strong> o ProView (Revista dos Tribunais) reconhece a Universidade pelo endereço de rede. Fora do campus, <a href="https://www.ufrgs.br/bibliotecas/pesquisa/proxy/" rel="noopener">configure o proxy da UFRGS</a> uma vez no navegador.</p>
+    </div>
+  </details>
+
+  <p class="contagem" id="contagem" aria-live="polite"></p>
+  <ul class="lista" id="lista"></ul>
+  <button class="mais" id="mais" type="button" hidden>Mostrar mais</button>
+
+  <footer>
+    <p>Projeto independente, sem vínculo oficial com a UFRGS. Os livros pertencem às plataformas e só abrem para quem tem acesso pela Universidade. Este site apenas organiza os links.</p>
+    <p id="rodape-data"></p>
+  </footer>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const PAGE = 50;
+let FONTES = [], LIVROS = [], view = [], shown = 0;
+
+function el(tag, cls, text){ const e = document.createElement(tag); if(cls) e.className = cls; if(text) e.textContent = text; return e; }
+
+async function init(){
+  let data;
+  try { data = await (await fetch('data.json')).json(); }
+  catch(e){
+    $('#lede').textContent = 'Não foi possível carregar a lista de livros. Se você abriu o arquivo direto do computador, rode um servidor local (veja o README).';
+    return;
+  }
+  FONTES = data.fontes;
+  LIVROS = data.livros.map(l => ({ t:l[0], a:l[1], e:l[2], y:l[3], s:l[4], f:l[5], c:l[6], u:l[7],
+    h: norm([l[0], l[1], l[2], l[4]].join(' ')) }));
+  FONTES.forEach((f, i) => { const o = el('option', '', f.nome); o.value = i; $('#fonte').append(o); });
+  $('#lede').textContent = LIVROS.length.toLocaleString('pt-BR') + ' títulos com link direto para leitura. Entre com seu login da UFRGS quando a plataforma pedir.';
+  $('#rodape-data').textContent = 'Lista atualizada em ' + data.gerado.split('-').reverse().join('/') + '.';
+  ['#q','#fonte','#acesso','#ordem'].forEach(s => $(s).addEventListener(s === '#q' ? 'input' : 'change', debounce(filtrar, 120)));
+  $('#mais').addEventListener('click', () => desenhar(false));
+  filtrar();
+}
+
+function debounce(fn, ms){ let t; return () => { clearTimeout(t); t = setTimeout(fn, ms); }; }
+
+function filtrar(){
+  const termos = norm($('#q').value).split(/\s+/).filter(Boolean);
+  const fonte = $('#fonte').value, acesso = $('#acesso').value;
+  view = LIVROS.filter(l => (fonte === '' || l.f === +fonte) && (!acesso || l.c === acesso) && termos.every(t => l.h.includes(t)));
+  if ($('#ordem').value === 'novos') view.sort((a, b) => (+b.y || 0) - (+a.y || 0) || a.t.localeCompare(b.t, 'pt'));
+  else view.sort((a, b) => a.t.localeCompare(b.t, 'pt'));
+  shown = 0; $('#lista').replaceChildren(); desenhar(true);
+}
+
+function desenhar(reset){
+  const lista = $('#lista');
+  if (view.length === 0){
+    const v = el('li', 'vazio', 'Nenhum título encontrado. Use menos palavras ou ');
+    const b = el('button', '', 'limpe os filtros'); b.type = 'button';
+    b.addEventListener('click', () => { $('#q').value = ''; $('#fonte').value = ''; $('#acesso').value = ''; filtrar(); });
+    v.append(b, '.'); lista.append(v);
+    $('#contagem').textContent = '0 resultados'; $('#mais').hidden = true; return;
+  }
+  const fim = Math.min(shown + PAGE, view.length);
+  for (let i = shown; i < fim; i++) lista.append(item(view[i]));
+  shown = fim;
+  $('#contagem').textContent = view.length.toLocaleString('pt-BR') + (view.length === 1 ? ' resultado' : ' resultados');
+  $('#mais').hidden = shown >= view.length;
+}
+
+function item(l){
+  const f = FONTES[l.f];
+  const li = el('li', 'item'); li.style.setProperty('--cor', f.cor);
+  const corpo = el('div');
+  corpo.append(el('h2', 'titulo', l.t));
+  const ref = [l.a && l.a.replace(/\.$/, ''), [l.e, l.y].filter(Boolean).join(', ')].filter(Boolean).join('. ');
+  if (ref) corpo.append(el('p', 'ref', ref + '.'));
+  const tags = el('p', 'tags');
+  tags.append(el('span', 'fonte', f.nome));
+  if (l.s) tags.append(el('span', '', l.s));
+  if (l.c === 'R') tags.append(el('span', 'rede', 'Rede UFRGS ou proxy'));
+  corpo.append(tags);
+  const a = el('a', 'ler', 'Ler'); a.href = l.u; a.target = '_blank'; a.rel = 'noopener';
+  a.setAttribute('aria-label', 'Ler ' + l.t + ' em ' + f.nome);
+  li.append(corpo, a);
+  return li;
+}
+init();
+</script>
+</body>
+</html>
